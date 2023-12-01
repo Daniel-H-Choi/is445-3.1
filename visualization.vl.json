@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Daniel-H-Choi/is445-3.1/main/first_half.csv"
+  },
+  "transform": [
+    {
+      "filter": {
+        "and": [
+          {"field": "Model Year", "valid": true},
+          {"field": "Electric Range", "valid": true}
+        ]
+      }
+    }
+  ],
+  "mark": "rect",
+  "width": 300,
+  "height": 200,
+  "encoding": {
+    "x": {
+      "bin": {"maxbins": 60},
+      "field": "Model Year",
+      "type": "quantitative"
+    },
+    "y": {
+      "bin": {"maxbins": 40},
+      "field": "Electric Range",
+      "type": "quantitative"
+    },
+    "color": {"aggregate": "count", "type": "quantitative"}
+  },
+  "config": {"view": {"stroke": "transparent"}}
+}
